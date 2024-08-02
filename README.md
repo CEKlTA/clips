@@ -4,9 +4,9 @@
 
 ## Features
 
-- **Advanced Search:** Use regular expressions to quickly find entries.
-- **Modification and Deletion:** Efficiently modify or delete entries.
-- **Data Generation:** Quickly and easily generate new entries.
+- **Advanced Search:** Use regular expressions to find entries.
+- **Modify and Remove:** Efficiently modify or remove entries.
+- **Data Generation:** Quickly generate new random data.
 
 ## Installation
 
