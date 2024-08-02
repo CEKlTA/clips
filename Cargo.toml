@@ -1,0 +1,10 @@
+[package]
+name = "clips"
+description = "A password manager written in Rust."
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+json = "0.12.4"
+regex = "1.10.5"
+rand = "0.8.5"
