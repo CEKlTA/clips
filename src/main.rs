@@ -147,7 +147,7 @@ fn main() -> Result<(), AnyError> {
     \x1b[0;32mclips key_name\x1b[0m
 
 \x1b[1;34mDescription:\x1b[0m
-    \x1b[0;32mClips (CLI Password Storage) is a command-line tool designed for managing JSON format data, ideal for password management. It allows you to search (with support for regex expressions), modify, remove, and generate data entries effortlessly.\x1b[0m
+    \x1b[0;32mClips (CLI Password Storage) is a command-line tool designed for managing local JSON format data, ideal for password management. It allows you to search (with support for regex expressions), modify, remove, and generate data entries effortlessly.\x1b[0m
 
     \x1b[0;32mRunning clips without arguments will display this usage information.\x1b[0m
 ";
