@@ -10,36 +10,55 @@
 
 ## Installation
 
+Requirements:
+- git
+- rustc
+- cargo
+
 ```bash
-git clone https://github.com/your_username/clips.git
+git clone https://github.com/CEKLTA/clips
 cd clips
+cargo b
 ```
 
+The executable will be located under "clips/target/debug/"
+or "clips/target/release" if you used `cargo b --release`
+
 ## Usage
+
+```bash
+clips <RegEx> [JSON | -r(remove) | -g(generate)]
+```
 
 ### Search
 
 ```bash
-clips search "regular_expression"
+clips <regular_expression>
+clips foo
 ```
 
-### Modification
+### Modify
 
 ```bash
-clips modify "entry_name" "new_value"
+clips <RegEx> [new_value]
+clips foo 37
 ```
 
-### Deletion
+### Remove
 
 ```bash
-clips remove "entry_name"
+clips <RegEx> -r
+clips foo -r
 ```
 
-### Data Generation
+### Generate
 
 ```bash
-clips generate "entry_name"
+clips <RegEx> -g
+clips foo -g
 ```
+
+##
 
 ## Contributions
 
@@ -54,8 +73,8 @@ Contributions are welcome! If you want to contribute, please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. (open source)
 
 ---
 
-Developed with ❤️ by cekita (https://github.com/CEKLTA)
+Developed with ❤️ by [cekita](https://github.com/CEKLTA)
