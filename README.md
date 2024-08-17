@@ -16,7 +16,7 @@ Requirements:
 - cargo
 
 ```bash
-git clone https://github.com/CEKLTA/clips
+git clone https://github.com/CEKlTA/clips.git
 cd clips
 cargo b
 ```
