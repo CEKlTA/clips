@@ -33,7 +33,7 @@ clips <RegEx> [JSON | -r(remove) | -g(generate)]
 ### Search
 
 ```bash
-clips <regular_expression>
+clips <RegEx>
 clips foo
 ```
 
