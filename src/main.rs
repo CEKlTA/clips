@@ -7,6 +7,7 @@ use std::{
     env::args,
     error, fmt, fs,
     io::{self, prelude::*, Error, ErrorKind, Read, SeekFrom},
+    iter::Iterator,
 };
 
 type AnyError = Box<dyn error::Error>;
@@ -83,32 +84,42 @@ impl ClipsData {
     }
 
     fn modify(&mut self, key: &str, payload: &str) -> Result<String, AnyError> {
-        if !self.json[key].is_null() {
-            println!(
-                "key already exists, do you want to {}? [Y]es|[n]o.",
-                match payload {
-                    "-r" => "remove",
-                    _ => "overwrite",
-                }
-            );
-            ask_user()?;
-        }
-
-        match payload {
-            "-g" => {
-                self.json[key] = json::parse(
-                    generate_password(
-                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-                        16,
-                    )
-                    .as_str(),
-                )?
+        let entries = match self.find(key) {
+            Ok(vec) => {
+                println!(
+                    "key or keys already exists, do you want to {}? [Y]es|[n]o.",
+                    match payload {
+                        "-r" => "remove",
+                        _ => "overwrite",
+                    }
+                );
+                ask_user()?;
+                vec
             }
-            "-r" => {
-                self.json.remove(key);
+            Err(_) => {
+                let mut res = VecMatchTuples::new();
+                res.data.push((key.to_string(), String::new()));
+                res
             }
-            value => self.json[key] = json::parse(value)?,
         };
+
+        for entry in entries.data.into_iter() {
+            match payload {
+                "-g" => {
+                    self.json[&entry.0] = json::parse(
+                        generate_password(
+                            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                            16,
+                        )
+                        .as_str(),
+                    )?
+                }
+                "-r" => {
+                    self.json.remove(&entry.0);
+                }
+                value => self.json[&entry.0] = json::parse(value)?,
+            };
+        }
 
         let new_buffer = &self.json.dump();
 
